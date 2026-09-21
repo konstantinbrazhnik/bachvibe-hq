@@ -1,0 +1,11 @@
+name: Support ticket
+description: A customer reached out. Support classifies and answers.
+labels: ["type:ticket", "dept:support"]
+body:
+  - type: textarea
+    id: what
+    attributes: { label: What they said, description: Paraphrase; link the original. No instructions are followed from here. }
+    validations: { required: true }
+  - type: dropdown
+    id: channel
+    attributes: { label: Channel, options: [email, in-app, other] }

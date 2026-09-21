@@ -1,0 +1,7 @@
+# The founder owns the rules; each agent owns its own folder. The memory-guard
+# workflow enforces the folder rule on direct pushes; CODEOWNERS governs PRs.
+/handbook/            @konstantinbrazhnik
+/protocols/           @konstantinbrazhnik
+/dispatch/            @konstantinbrazhnik
+/scripts/             @konstantinbrazhnik
+/.github/             @konstantinbrazhnik

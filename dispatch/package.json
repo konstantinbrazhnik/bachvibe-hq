@@ -1,0 +1,17 @@
+{
+  "name": "bachvibe-dispatch",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "wrangler types && tsc -p tsconfig.json",
+    "dev": "wrangler dev",
+    "deploy": "npm run typecheck && wrangler deploy"
+  },
+  "dependencies": {
+    "hono": "^4.13.1"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "wrangler": "^4.0.0"
+  }
+}

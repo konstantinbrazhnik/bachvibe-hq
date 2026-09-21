@@ -1,0 +1,20 @@
+name: Feature
+description: Something the product should do. Product brings it to Ready.
+labels: ["type:feature", "dept:product"]
+body:
+  - type: textarea
+    id: problem
+    attributes: { label: Customer problem, description: One paragraph, in the customer's words where possible }
+    validations: { required: true }
+  - type: input
+    id: plan
+    attributes: { label: Plan reference, placeholder: BACHVIBE_PLAN.md §T18.3 }
+  - type: textarea
+    id: done
+    attributes: { label: Done when, description: Checklist a persona can execute }
+  - type: input
+    id: personas
+    attributes: { label: Personas, placeholder: organizer, attendee, honoree }
+  - type: textarea
+    id: out
+    attributes: { label: Out of scope }

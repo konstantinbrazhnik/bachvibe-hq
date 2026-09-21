@@ -1,0 +1,32 @@
+name: memory-guard
+# An agent commits straight to main only inside its own folder (and bulletins/).
+# Every agent commit carries the trailer `Agent: <dept>`; a commit without one
+# is a human's and is not checked here (CODEOWNERS covers PRs).
+on:
+  push:
+    branches: [main]
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: each agent commit stays in its lane
+        run: |
+          set -euo pipefail
+          range="${{ github.event.before }}..${{ github.sha }}"
+          if git cat-file -e "${{ github.event.before }}" 2>/dev/null; then :; else range="${{ github.sha }}"; fi
+          fail=0
+          for sha in $(git rev-list --no-merges "$range"); do
+            dept=$(git show -s --format=%B "$sha" | sed -n 's/^Agent: *\([a-z]*\) *$/\1/p' | tail -1)
+            [ -z "$dept" ] && continue
+            bad=$(git show --pretty=format: --name-only "$sha" | grep -v '^$' | grep -Ev "^(agents/$dept/|bulletins/)" || true)
+            if [ -n "$bad" ]; then
+              echo "::error::commit $sha by agent '$dept' touches files outside agents/$dept/ and bulletins/:"; echo "$bad"; fail=1
+            fi
+          done
+          exit $fail
+      - name: no secrets in memory
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

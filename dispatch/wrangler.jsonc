@@ -1,0 +1,35 @@
+{
+	"$schema": "../../node_modules/wrangler/config-schema.json",
+	"name": "bachvibe-dispatch",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-08-01",
+	"compatibility_flags": ["nodejs_compat"],
+	"workers_dev": true,
+	"observability": { "enabled": true },
+	"vars": {
+		// The repositories whose webhooks this Worker accepts, and the one
+		// that receives support tickets. Comma-separated owner/name.
+		"REPOS": "konstantinbrazhnik/bachvibe-hq,konstantinbrazhnik/Daren-bach,konstantinbrazhnik/bachvibe-site",
+		"TICKET_REPO": "konstantinbrazhnik/bachvibe-hq",
+		"PROJECT_OWNER": "konstantinbrazhnik",
+		// Filled from `scripts/bootstrap-github.sh` output.
+		"PROJECT_NUMBER": "0",
+		// Seconds between two fires of the same department. A fresh session
+		// sweeps its whole column, so a burst of label changes needs one wake.
+		"FIRE_DEBOUNCE_SECONDS": "300"
+	},
+	"kv_namespaces": [
+		{ "binding": "STATE", "id": "REPLACE_WITH_KV_ID" }
+	],
+	// The reconcile sweep: project fields → labels, for cards a human dragged
+	// on the board (personal-account Projects send no webhooks).
+	"triggers": { "crons": ["*/15 * * * *"] },
+	// Secrets (wrangler secret put):
+	//   GITHUB_WEBHOOK_SECRET   shared with every repository webhook
+	//   GITHUB_TOKEN            fine-grained PAT: Issues RW + Projects RW on REPOS
+	//   FIRE_URL_<DEPT>         each Routine's API-trigger fire endpoint
+	//   FIRE_TOKEN_<DEPT>       its bearer token
+	// DEPT ∈ MANAGER, PRODUCT, ENGINEERING, QA, SUPPORT, MARKETING, BOOKKEEPING
+	// Email Routing: bind support@bachvi.be to this Worker in the dashboard;
+	// the `email` handler below turns each message into an Inbox card.
+}

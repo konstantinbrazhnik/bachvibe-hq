@@ -1,0 +1,23 @@
+name: Bug
+description: Something the product does wrong. Support reproduces it before engineering sees it.
+labels: ["type:bug", "dept:support"]
+body:
+  - type: textarea
+    id: context
+    attributes: { label: Context, description: Who hit it, doing what, and why it matters. Link the ticket. }
+    validations: { required: true }
+  - type: input
+    id: build
+    attributes: { label: Build id, description: From /api/version on preview }
+  - type: input
+    id: persona
+    attributes: { label: Persona / role, placeholder: attendee, non-organizer }
+  - type: textarea
+    id: steps
+    attributes: { label: Steps, description: Numbered, and they worked on preview }
+  - type: textarea
+    id: expected
+    attributes: { label: Expected }
+  - type: textarea
+    id: actual
+    attributes: { label: Actual, description: Plus a screenshot or trace path }
