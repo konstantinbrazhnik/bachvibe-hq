@@ -1,11 +1,15 @@
 # Persona
 
-File: `agents/qa/personas/<slug>.md`. A persona is a *motivation*, not a test
-script. The runner derives the steps from the motivation and the screen.
+File: `agents/qa/.claude/agents/persona-<slug>.md`. A persona is a *motivation*,
+not a test script, and it is a Claude Code sub-agent: the frontmatter below is
+what makes it one, and the mount script links it into `~/.claude/agents/` so
+the QA session can delegate to it by name.
 
 ```markdown
 ---
-name: <slug>
+name: persona-<slug>
+description: <who this is and when to use them — the QA session picks sub-agents by this line>
+tools: Bash, Read, Glob, Grep, WebFetch
 role: <organizer | attendee | honoree | reseller | peeker | payer>
 device: <iPhone 15 Safari standalone | Pixel 8 Chrome | desktop Chrome>
 network: <good | venue LTE | offline bursts>
@@ -29,4 +33,8 @@ Which other personas' actions they see, and what they expect to see.
 
 ## Must never see
 Role gates that, if broken, this persona would be the first to notice.
+
+## How to run (you are a sub-agent)
+Copy this section from an existing persona: what the sub-agent receives, how
+it explores (motivation, not script), and the PASS / FAIL / COULD-NOT report.
 ```

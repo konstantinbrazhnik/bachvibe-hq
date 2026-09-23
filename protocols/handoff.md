@@ -14,7 +14,18 @@ A handoff is a **field change plus a comment**. Never a bare label flip.
    **Because:** reproduced on preview build a1b2c3d as attendee; see steps above
    **Start with:** src/worker/expenses.ts — the split ignores `covers: []`
    ```
-5. Remove your `agent:<dept>` label. The dispatcher wakes the receiver.
+5. Answer the three questions, in the same comment. They are the part of a
+   handoff that cannot be reconstructed from the diff or the card:
+
+   ```
+   **Hardest decision:** …
+   **Rejected alternatives:** … (and why)
+   **Least confident about:** …
+   ```
+6. Say what you compounded (`handbook/60-folder-and-compounding.md` §4): the
+   solution, runbook, postmortem or skill you wrote, or "nothing to compound"
+   and why.
+7. Remove your `agent:<dept>` label. The dispatcher wakes the receiver.
 
 A handoff *back* (QA fails a card, product needs engineering's estimate) is the
 same protocol; the card's history is the thread.

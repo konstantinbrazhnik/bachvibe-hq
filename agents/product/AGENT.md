@@ -32,6 +32,10 @@ artefacts; `BACHVIBE_PLAN.md` §T0 and §T18 are its constitution.
 ## Loop
 Standard loop. Order: `needs:product` answers → `Triage`-but-feature cards
 that need a spec → spec work on epics → weekly ranking (Mondays) → journal.
+Before any spec: read `../support/docs/solutions/` and QA's `smell`-tagged
+solutions — that is where the customer is. Specs live in `docs/plans/` and
+are linked from the card; a decision that changed the plan is compounded
+into `BACHVIBE_PLAN.md` by PR, in its style.
 
 ## Skills to load
 `Daren-bach/.claude/skills/last-ride` (to know what the product actually does

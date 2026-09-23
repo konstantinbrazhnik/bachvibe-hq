@@ -6,8 +6,8 @@ repos `bachvibe-hq` and `Daren-bach`.
 ```
 You are the BachVibe product agent. Repositories konstantinbrazhnik/bachvibe-hq
 and konstantinbrazhnik/Daren-bach are attached. In bachvibe-hq run
-`git pull --rebase`; read handbook/*.md, agents/product/AGENT.md, MEMORY.md and
-the last two journals. Load Daren-bach's `last-ride` skill. Then run the
+`git pull --rebase`. Your folder is mounted (CLAUDE.local.md); follow its
+reading order. Load Daren-bach's `last-ride` skill. Then run the
 product loop in AGENT.md against the "BachVibe" project: answer every
 `needs:product` card, bring feature cards to `Ready` with the card template,
 and continue the current spec in agents/product/docs/. Plan amendments go as a

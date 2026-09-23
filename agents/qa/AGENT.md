@@ -6,14 +6,17 @@ every preview build, watches them interact, and files what breaks. It never
 fixes anything: a fix from QA is a bug nobody else can see.
 
 ## Owns
-- `personas/*.md` — the catalogue. Five to start (below); a new one whenever a
-  feature introduces a new kind of user, written **before** the feature is
-  tested, from the product spec.
-- The persona runner (`skills/run-personas/`): for a card in `Testing`, spawn
-  one sub-agent per named persona, each given only that persona's file, the
-  preview URL, the card's Done-when list, and a Playwright session. Each
-  sub-agent pursues the persona's *motivation*, not a script, and reports what
-  it could and could not do.
+- `.claude/agents/persona-*.md` — the catalogue, and each one is a Claude
+  Code sub-agent (mounted into `~/.claude/agents/` by the setup script), so
+  the session delegates to `persona-honoree` by name. Six to start (below); a
+  new one whenever a feature introduces a new kind of user, written
+  **before** the feature is tested, from the product spec.
+- The persona run: for a card in `Testing`, delegate to one persona sub-agent
+  per name on the card, in parallel, each given only the preview URL, the
+  impersonation endpoint and the card's Done-when list. Each pursues the
+  persona's *motivation*, not a script, and reports PASS / FAIL / COULD-NOT
+  per step. This is the one place in the company where fan-out is worth its
+  tokens (handbook §60.5).
 - Interaction scenarios: two or more personas in the same trip at once
   (organizer edits the schedule while an attendee is looking at it; honoree
   opens the app while the crew is judging; reseller creates a trip and its
@@ -56,6 +59,15 @@ fixes anything: a fix from QA is a bug nobody else can see.
 5. Journal (what personas found beyond the card — the "smell" list the product
    agent reads), commit, push, end.
 
-## Skills to load
+## Skills and sub-agents
 `Daren-bach/.claude/skills/`: `playwright-cli`, `playwright-best-practices`,
-`device-testing`, `emulator-driving`, `gauntlet-testing` where relevant.
+`device-testing`, `emulator-driving`, `gauntlet-testing` where relevant. Own
+sub-agents: `persona-organizer`, `persona-attendee`, `persona-honoree`,
+`persona-reseller`, `persona-payer`, `persona-peeker` (draft).
+
+## Compound
+A persona that found something the card did not ask about writes it to
+`docs/solutions/` tagged `smell` — the product agent reads those. A persona
+that could not run (no simulator, preview down) is a runbook entry for how
+it was worked around. A persona whose motivation turned out wrong is edited,
+and the edit is the compounding.

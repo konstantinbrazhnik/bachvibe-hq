@@ -19,6 +19,7 @@ npm install
 npx wrangler kv namespace create STATE      # paste the id into wrangler.jsonc
 npx wrangler secret put GITHUB_WEBHOOK_SECRET
 npx wrangler secret put GITHUB_TOKEN        # fine-grained: Issues RW, Projects RW, on REPOS only
+npx wrangler secret put RUNS_TOKEN          # any long random string; goes in the manager's MEMORY.md
 for d in MANAGER PRODUCT ENGINEERING QA SUPPORT MARKETING BOOKKEEPING; do
   npx wrangler secret put FIRE_URL_$d       # from the Routine's API trigger
   npx wrangler secret put FIRE_TOKEN_$d
@@ -35,6 +36,20 @@ the same secret, events `issues`, `issue_comment`, `pull_request`,
 A department whose `FIRE_*` secrets are missing is simply not woken by events;
 its hourly heartbeat still runs. That is the intended degraded mode while the
 Routines are being set up one at a time.
+
+## The runs ledger
+
+Every fire is recorded (`run:<dept>:<iso>`, kept 14 days) and served at
+`GET /runs?hours=48` with `Authorization: Bearer $RUNS_TOKEN`. A fire with no
+journal entry from that department within two hours is a stalled session; the
+manager's standup and the founder's `/hey` both read this.
+
+## Dumb-problem fixtures
+
+`fixtures/` holds the inputs that break naive parsers — em dashes, curly
+quotes, emoji, a 4 000-character body, an empty subject, a subject with a
+newline. `npm run smoke` runs the email handler and the webhook router over
+them and must pass before deploy. Add a fixture the day a new one bites.
 
 ## What it deliberately does not do
 

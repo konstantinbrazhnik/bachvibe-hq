@@ -8,6 +8,7 @@
  *                   dragged on the board, then flush debounced wakes.
  *   email           support@bachvi.be → an Inbox card, type:ticket, and a
  *                   wake for support.
+ *   GET /runs       the fires ledger (bearer RUNS_TOKEN), for stall detection.
  *
  * It never reads code, never merges, never deploys. Its GitHub token can touch
  * issues and the project and nothing else.
@@ -25,11 +26,12 @@ import {
   type GitHubEnv,
   type IssueRef,
 } from './github';
-import { fire, flushPending, type FireEnv } from './fire';
+import { fire, flushPending, listRuns, type FireEnv } from './fire';
 
 type Env = GitHubEnv &
   FireEnv & {
     GITHUB_WEBHOOK_SECRET: string;
+    RUNS_TOKEN: string;
     REPOS: string;
     TICKET_REPO: string;
   };
@@ -37,6 +39,13 @@ type Env = GitHubEnv &
 const app = new Hono<{ Bindings: Env }>();
 
 app.get('/', (c) => c.text('bachvibe-dispatch'));
+
+// The runs ledger for the manager's stall detection and the founder's /hey.
+app.get('/runs', async (c) => {
+  if (c.req.header('authorization') !== `Bearer ${c.env.RUNS_TOKEN}`) return c.text('unauthorized', 401);
+  const hours = Math.min(24 * 14, Math.max(1, Number(c.req.query('hours')) || 48));
+  return c.json(await listRuns(c.env, DEPARTMENTS, hours));
+});
 
 // ---------- webhook verification ----------
 

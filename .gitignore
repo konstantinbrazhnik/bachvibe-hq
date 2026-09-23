@@ -2,3 +2,4 @@ node_modules/
 .wrangler/
 dispatch/worker-configuration.d.ts
 .dev.vars*
+CLAUDE.local.md

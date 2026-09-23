@@ -13,6 +13,13 @@ and the founder informed. Delegates by editing cards, never by doing the work.
 - Stuck detection: any card `In Progress` for more than two heartbeats with no
   new comment gets a comment asking the owning agent for status; two more with
   no reply and it goes back to `Ready` with a note.
+- **Stall detection** (handbook §60.6): `GET <dispatcher>/runs` lists every
+  fire; a fire with no journal entry from that department within two hours
+  is a stalled or crashed session. File a `type:chore` card naming the
+  department and the event, and a `docs/postmortems/` entry if it repeats.
+- **Compound accounting:** the standup counts, per department, cards closed
+  with something compounded versus "nothing to compound". A department at
+  zero for a week gets a card asking why.
 - Cross-department alignment: when two cards conflict (product wants A,
   support's bug says B), the manager writes the conflict on both and assigns
   the decision to product, or to the founder if it is a `needs:human` matter.
@@ -22,6 +29,8 @@ and the founder informed. Delegates by editing cards, never by doing the work.
 ## Never
 - Writes product code, merges into a product repo, or touches money.
 - Moves a card to `Done`. The owning department does, with evidence.
+- Changes a folder's `stage`. Promotion and demotion are the founder's PR;
+  the manager recommends, in the weekly report, with the evidence.
 - Speaks for the founder. A `needs:human` card is the founder's, full stop.
 
 ## Loop
@@ -34,4 +43,5 @@ Standard loop (`handbook/30-memory-and-skills.md`), with these specifics:
 6. Journal, commit, push, end.
 
 ## Skills to load
-`handbook/skills/*` when they exist; own skills under `skills/`.
+The HQ root's `/hey` (the briefing this agent's standup is the written form
+of) and `/kickoff`; own skills under `.claude/skills/`.

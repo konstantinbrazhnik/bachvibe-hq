@@ -26,13 +26,20 @@ https://code.claude.com/docs/en/cloud-environments):
 
 | Environment | Network | Repos attached by the Routine | Setup script does | Extra vars |
 |---|---|---|---|---|
-| `bv-manager` | trusted | `bachvibe-hq` | nothing | `BV_DEPT=manager` |
-| `bv-product` | trusted | `bachvibe-hq`, `Daren-bach` | nothing | `BV_DEPT=product` |
-| `bv-engineering` | custom: npm, Cloudflare, GitHub, `*.bachvi.be` | `bachvibe-hq`, `Daren-bach` (+ `bachvibe-site` when the card says so) | `npm ci`; `npx wrangler types` | `BV_DEPT=engineering`, `CLOUDFLARE_API_TOKEN` (scoped: Workers + D1 + R2, **preview resources only**) |
-| `bv-qa` | custom: same + the preview URL | `bachvibe-hq`, `Daren-bach` | `npm ci`; Playwright already present | `BV_DEPT=qa`, `E2E_BASE_URL=https://test.bachvi.be` |
-| `bv-support` | custom: GitHub, `*.bachvi.be`, the help-desk API | `bachvibe-hq`, `Daren-bach` | `npm ci` (to run the app locally for reproduction) | `BV_DEPT=support`, help-desk read/write token |
-| `bv-marketing` | custom: npm, Cloudflare, GitHub, image and font CDNs | `bachvibe-hq`, `bachvibe-site` | `npm ci` in the site | `BV_DEPT=marketing`, `CLOUDFLARE_API_TOKEN` scoped to the site's **staging** Worker |
-| `bv-bookkeeping` | custom: GitHub, merchant-of-record API, Cloudflare billing API | `bachvibe-hq` | nothing | `BV_DEPT=bookkeeping`, **read-only** tokens for MoR and Cloudflare billing |
+| `bv-manager` | trusted | `bachvibe-hq` | `mount-agent.sh` | `BV_DEPT=manager`, `RUNS_TOKEN` (read the dispatcher's fires ledger) |
+| `bv-product` | trusted | `bachvibe-hq`, `Daren-bach` | `mount-agent.sh` | `BV_DEPT=product` |
+| `bv-engineering` | custom: npm, Cloudflare, GitHub, `*.bachvi.be` | `bachvibe-hq`, `Daren-bach` (+ `bachvibe-site` when the card says so) | `mount-agent.sh` (runs `npm ci` in the product checkout); `npx wrangler types` | `BV_DEPT=engineering`, `CLOUDFLARE_API_TOKEN` (scoped: Workers + D1 + R2, **preview resources only**) |
+| `bv-qa` | custom: same + the preview URL | `bachvibe-hq`, `Daren-bach` | `mount-agent.sh`; Playwright already present | `BV_DEPT=qa`, `E2E_BASE_URL=https://test.bachvi.be` |
+| `bv-support` | custom: GitHub, `*.bachvi.be`, Cloudflare (logs), the help-desk API | `bachvibe-hq`, `Daren-bach` **read-only** (no push) | `mount-agent.sh` | `BV_DEPT=support`, help-desk token, `CLOUDFLARE_API_TOKEN` **read-only**: Workers observability + D1 read on preview |
+| `bv-marketing` | custom: npm, Cloudflare, GitHub, image and font CDNs | `bachvibe-hq`, `bachvibe-site` | `mount-agent.sh` | `BV_DEPT=marketing`, `CLOUDFLARE_API_TOKEN` scoped to the site's **staging** Worker |
+| `bv-bookkeeping` | custom: GitHub, merchant-of-record API, Cloudflare billing API | `bachvibe-hq` | `mount-agent.sh` | `BV_DEPT=bookkeeping`, **read-only** tokens for MoR and Cloudflare billing |
+
+**The setup script is the mount.** `scripts/mount-agent.sh` reads `BV_DEPT`,
+links `agents/$BV_DEPT/CLAUDE.md` to the root's `CLAUDE.local.md` (gitignored,
+auto-loaded) and the folder's `.claude/agents/*` and `.claude/skills/*` into
+`~/.claude/`. That is what makes the folder the agent (handbook §60.1)
+instead of a prompt that lists files to read. It also installs the product
+checkout's dependencies so the session can run tests and reproduce.
 
 Three properties are load-bearing:
 
@@ -66,6 +73,11 @@ Exact prompts are in each `agents/<dept>/ROUTINE.md`; the schedule is:
 Heartbeats are the floor, not the mechanism. The dispatcher's `/fire` call is
 what makes a labelled card start within a minute instead of within an hour.
 
+**And the fire secrets are the trust gate** (§60.3). A department's
+`FIRE_URL_*`/`FIRE_TOKEN_*` are created only when its folder's `stage` is
+promoted to `autonomous`; a heartbeat Routine is created at `supervised`.
+Below that, the folder is used by hand until its output is predictable.
+
 ## Cloudflare
 
 | Resource | Purpose | Account |
@@ -73,7 +85,7 @@ what makes a labelled card start within a minute instead of within an hour.
 | Worker `bachvibe-dispatch` | GitHub webhooks → labels ↔ project fields → Routine fires; email → tickets | the existing account |
 | KV `BV_DISPATCH` | debounce keys, delivery ids (idempotency), field-id cache | same |
 | Email Routing `support@bachvi.be` → Email Worker (in `bachvibe-dispatch`) | every support mail becomes an `Inbox` card | same |
-| Secrets on the dispatcher | `GITHUB_WEBHOOK_SECRET`, `GITHUB_TOKEN` (fine-grained: issues + projects on the listed repos), one `ROUTINE_FIRE_TOKEN_<DEPT>` per department | wrangler secrets |
+| Secrets on the dispatcher | `GITHUB_WEBHOOK_SECRET`, `GITHUB_TOKEN` (fine-grained: issues + projects on the listed repos), `RUNS_TOKEN`, one `FIRE_URL_<DEPT>`/`FIRE_TOKEN_<DEPT>` pair per **autonomous** department | wrangler secrets |
 | Worker `bachvibe-site` + `bachvibe-site-staging` | the marketing site (Astro static assets on Workers) | same |
 | The product Workers | unchanged: `daren-bach` (main) and `daren-bach-preview` (preview) | same |
 
@@ -88,12 +100,15 @@ bookkeeping reports it weekly as a line beside Cloudflare and the merchant fees.
    dispatcher needs).
 2. Deploy `dispatch/` with `wrangler deploy`; add the repository webhooks it
    prints. Point `support@bachvi.be` at it.
-3. Create the seven environments in Claude Code (web), one per row above.
-4. From a session in each environment, create its Routine(s) with the prompt
-   from `ROUTINE.md`; copy each Routine's fire token into the dispatcher's
-   secrets.
-5. Seed the three epics and their first cards. The manager's first standup
-   triages them.
+3. Create the seven environments in Claude Code (web), one per row above,
+   each with `bash scripts/mount-agent.sh` as its setup script.
+4. **Use each folder by hand first** (stage `assisted`): open sessions in the
+   environment, run the loop, fix `AGENT.md` and the skills until the output
+   is predictable. Then promote to `supervised` and create the heartbeat
+   Routine from `ROUTINE.md`; then to `autonomous` and copy the Routine's
+   fire URL and token into the dispatcher's secrets.
+5. Seed the three epics with `/kickoff`. The manager's first standup triages
+   them.
 
 Steps 1–3 are `needs:human` by definition (they create resources). Step 4 is
 run once by the founder from a session; `scripts/routines.md` lists every call.

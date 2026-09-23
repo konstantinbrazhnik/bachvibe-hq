@@ -15,6 +15,8 @@ The reasoning behind "one HQ repo, product code elsewhere" is in
 
 ```
 hq/
+├── CLAUDE.md            the root context: which agent you are, the four rules
+├── .claude/skills/      the founder's skills: /hey (briefing), /kickoff (epic → cards)
 ├── handbook/            what every agent reads before it does anything
 │   ├── 00-company.md         mission, departments, what a human must approve
 │   ├── 10-task-bus.md        the GitHub Project: fields, columns, labels, handoffs
@@ -22,6 +24,7 @@ hq/
 │   ├── 30-memory-and-skills.md   what gets remembered, where, and how it is committed
 │   ├── 40-environments.md    one Claude Code environment per department, and Cloudflare
 │   ├── 50-definition-of-done.md  per-department exit criteria
+│   ├── 60-folder-and-compounding.md  the folder is the agent; trust stages; compound step
 │   └── brand/BRAND.md        the seed the marketing agent grows into a brand book
 ├── protocols/           fill-in templates the handbook refers to
 ├── agents/<dept>/       one folder per agent — see "Anatomy of an agent"
@@ -34,14 +37,24 @@ hq/
 
 ```
 agents/support/
+├── CLAUDE.md         auto-loaded: reading order and the folder's trust stage
 ├── AGENT.md          who it is, what it owns, what it may never do, its loop
-├── ROUTINE.md        the exact prompt its Routine fires with (fresh session each time)
+├── ROUTINE.md        the short prompt its Routine fires with (fresh session each time)
+├── .claude/
+│   ├── agents/           sub-agents: reviewers, personas, specialists
+│   └── skills/           Agent Skills the agent wrote for itself
 ├── memory/
 │   ├── MEMORY.md         curated, short, always loaded — facts that stay true
 │   └── journal/          one file per working day, append-only, never rewritten
-├── skills/           Agent Skills the agent wrote for itself (SKILL.md format)
-└── docs/             documents it maintains for the rest of the company
+└── docs/
+    ├── solutions/        one file per solved problem, tagged for retrieval
+    ├── runbooks/         procedures from real incidents
+    ├── postmortems/      every P0, stall, wrong action
+    └── plans/            plans for the cards this agent owns
 ```
+
+The folder is the agent: `scripts/mount-agent.sh` makes it the session's
+project, so nothing has to be re-explained (`handbook/60-folder-and-compounding.md`).
 
 An agent **owns its own folder and nothing else in this repo**. It may commit
 there directly to `main`; everything outside it goes through a pull request the
@@ -56,3 +69,6 @@ manager agent reviews. `.github/workflows/memory-guard.yml` enforces that.
 2. **If it is not in git, it did not happen.** A finding lives in a journal, a
    decision in a doc, a reusable procedure in a skill. Sessions are disposable;
    the repository is the company's memory.
+3. **Build it, use it, trust it, then orchestrate it.** No folder gets a
+   Routine before the founder has run it by hand until it is predictable, and
+   no folder gets dispatcher fires before its heartbeat has run supervised.

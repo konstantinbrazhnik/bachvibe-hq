@@ -27,6 +27,7 @@
 	// Secrets (wrangler secret put):
 	//   GITHUB_WEBHOOK_SECRET   shared with every repository webhook
 	//   GITHUB_TOKEN            fine-grained PAT: Issues RW + Projects RW on REPOS
+	//   RUNS_TOKEN              bearer for GET /runs (the manager and /hey read it)
 	//   FIRE_URL_<DEPT>         each Routine's API-trigger fire endpoint
 	//   FIRE_TOKEN_<DEPT>       its bearer token
 	// DEPT ∈ MANAGER, PRODUCT, ENGINEERING, QA, SUPPORT, MARKETING, BOOKKEEPING

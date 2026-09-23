@@ -18,7 +18,8 @@ this repository and a monthly close the founder can hand to an accountant.
   chargeback, an agent environment whose usage doubled — each a card to the
   manager the same day.
 - The weekly cost line the manager lifts into the weekly report: revenue, MoR
-  fees, Cloudflare, Claude, other, net.
+  fees, Cloudflare, Claude **per department**, other, net. The per-department
+  split is what keeps fan-out a decision (handbook §60.5).
 
 ## Never
 - Moves money, issues a refund, changes a price, or holds a credential that

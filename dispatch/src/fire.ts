@@ -41,7 +41,11 @@ export async function fire(env: FireEnv, dept: Department, text: string): Promis
     return 'failed';
   }
   const ttl = Math.max(60, Number(env.FIRE_DEBOUNCE_SECONDS) || 300);
-  await env.STATE.put(debounceKey, new Date().toISOString(), { expirationTtl: ttl });
+  const now = new Date().toISOString();
+  await env.STATE.put(debounceKey, now, { expirationTtl: ttl });
+  // The runs ledger: what the manager compares against journals to find a
+  // session that was fired and never wrote anything back (handbook §60.6).
+  await env.STATE.put(`run:${dept}:${now}`, text, { expirationTtl: 14 * 86400 });
   await env.STATE.delete(`pending:${dept}`);
   return 'fired';
 }
@@ -52,4 +56,21 @@ export async function flushPending(env: FireEnv, depts: readonly Department[]): 
     const text = await env.STATE.get(`pending:${dept}`);
     if (text && !(await env.STATE.get(`fire:${dept}`))) await fire(env, dept, text);
   }
+}
+
+export interface RunRecord { dept: Department; at: string; text: string }
+
+/** Every fire in the last `hours`, newest first. */
+export async function listRuns(env: FireEnv, depts: readonly Department[], hours = 48): Promise<RunRecord[]> {
+  const since = Date.now() - hours * 3600_000;
+  const out: RunRecord[] = [];
+  for (const dept of depts) {
+    const page = await env.STATE.list({ prefix: `run:${dept}:` });
+    for (const k of page.keys) {
+      const at = k.name.slice(`run:${dept}:`.length);
+      if (Date.parse(at) < since) continue;
+      out.push({ dept, at, text: (await env.STATE.get(k.name)) ?? '' });
+    }
+  }
+  return out.sort((a, b) => (a.at < b.at ? 1 : -1));
 }

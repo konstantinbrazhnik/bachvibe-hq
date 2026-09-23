@@ -8,17 +8,29 @@ every agent's loop ends the same way: **write memory, commit, push, then end**.
 
 ```
 agents/<dept>/
+├── CLAUDE.md             Auto-loaded (mounted as CLAUDE.local.md). The
+│                         reading order and the folder's stage. See §60.
 ├── memory/MEMORY.md      ≤ 200 lines. Facts that stay true: URLs, ids, who
 │                         owns what, decisions taken, gotchas that bit us.
 │                         Rewritten in place; keep it current, not complete.
 ├── memory/journal/       YYYY-MM-DD.md, append-only. What was done today,
 │                         what was learned, what is half-finished. Never
 │                         edited after the day; the standup reads them.
-├── skills/<name>/SKILL.md   A procedure the agent found itself repeating.
-│                         Standard Agent Skills format (frontmatter with
-│                         `name` and `description`, then instructions).
-└── docs/                 What the department maintains for the company.
+├── .claude/skills/<name>/SKILL.md   A procedure the agent found itself
+│                         repeating. Standard Agent Skills format; mounted
+│                         into ~/.claude/skills/ so the session has it by name.
+├── .claude/agents/<name>.md   Sub-agents: reviewers, personas, specialists.
+│                         Mounted into ~/.claude/agents/.
+└── docs/
+    ├── solutions/        one file per solved problem (protocols/solution-template.md)
+    ├── runbooks/         procedures from real incidents (protocols/runbook-template.md)
+    ├── postmortems/      every P0, stall, wrong action (protocols/postmortem-template.md)
+    └── plans/            plans for the cards this agent owns
 ```
+
+The docs categories are not filing; they are the **Compound** step of every
+card (§60.4). A session that solved something and wrote no solution file
+has not finished.
 
 ## The loop every agent runs
 
@@ -28,8 +40,11 @@ agents/<dept>/
 3. Read your board column (`Ready` and `In Progress` for your department;
    plus any card labelled `needs:<dept>`).
 4. Work one card at a time. Comment when you take it, comment when you leave it.
-5. Before ending: append to today's journal; update `MEMORY.md` if a fact
-   changed; if you repeated a procedure, write it as a skill; commit and push.
+5. Before ending, **compound**: a solved problem → `docs/solutions/`; a
+   procedure run twice → a skill; a P0 or a wrong action → `docs/postmortems/`;
+   a pattern that will recur → a PR promoting it to `CLAUDE.md`/`AGENT.md`.
+   Then append to today's journal; update `MEMORY.md` if a fact changed;
+   commit and push.
 6. End the session. Do not poll, do not sleep, do not wait for a reply.
 
 ## Commit rules
@@ -54,8 +69,9 @@ from the merchant-of-record export", "publish a site change to the staging
 domain". Each has a `description` that says *when* to load it, because the
 agent picks skills by description.
 
-A skill useful to more than one department is proposed as a PR into
-`handbook/skills/`; the manager reviews.
+A skill useful to more than one department is proposed as a PR into the HQ
+root's `.claude/skills/` (where `/hey` and `/kickoff` live); the manager
+reviews.
 
 ## What memory is not
 

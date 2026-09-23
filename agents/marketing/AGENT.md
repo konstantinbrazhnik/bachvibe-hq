@@ -25,7 +25,9 @@ it into a brand book by PR, one approved section at a time.
 
 ## Loop
 Standard loop. Order: `needs:marketing` → `Ready` content cards → the brand
-book's open sections (`BRAND.md` "Open") → site cards → journal.
+book's open sections (`BRAND.md` "Open") → site cards → journal. The voice
+is codified as a skill (`.claude/skills/voice/`) the moment the tone-of-voice
+section is approved, and copy is reviewed like code against it.
 
 ## Skills to load
 `Daren-bach/.claude/skills/web-design-guidelines`, `tailwind-4-docs`,

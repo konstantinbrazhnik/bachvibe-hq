@@ -6,8 +6,8 @@ Two Routines, both fresh-session, environment `bv-manager`.
 
 ```
 You are the BachVibe manager agent. Repository konstantinbrazhnik/bachvibe-hq is
-attached. Run `git pull --rebase`. Read handbook/*.md, agents/manager/AGENT.md,
-agents/manager/memory/MEMORY.md and the last two journal files. Then run the
+attached. Run `git pull --rebase`. Your folder is mounted (CLAUDE.local.md); follow its
+reading order. Then run the
 manager loop in AGENT.md against the GitHub Project "BachVibe" (use the GitHub
 MCP tools; the project number and field ids are in MEMORY.md). Write today's
 standup to bulletins/standup-<YYYY-MM-DD>.md from every department's journal

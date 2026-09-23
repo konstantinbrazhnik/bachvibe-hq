@@ -5,6 +5,7 @@
   "scripts": {
     "typecheck": "wrangler types && tsc -p tsconfig.json",
     "dev": "wrangler dev",
+    "smoke": "wrangler types && node smoke.mjs",
     "deploy": "npm run typecheck && wrangler deploy"
   },
   "dependencies": {
