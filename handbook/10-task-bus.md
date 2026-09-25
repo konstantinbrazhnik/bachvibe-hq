@@ -13,7 +13,7 @@ ever lost in transit.
 |---|---|---|
 | `Status` | single select | `Inbox` → `Triage` → `Ready` → `In Progress` → `In Review` → `Testing` → `Done`, plus `Blocked` |
 | `Department` | single select | `Management`, `Product`, `Engineering`, `QA`, `Support`, `Marketing`, `Bookkeeping`, `Admin` |
-| `Type` | single select | `bug`, `feature`, `ticket`, `spec`, `content`, `ledger`, `chore`, `epic` |
+| `Card type` | single select | `bug`, `feature`, `ticket`, `spec`, `content`, `ledger`, `chore`, `epic` |
 | `Priority` | single select | `P0` (customer down), `P1` (this week), `P2` (this month), `P3` (someday) |
 | `Persona` | text | which QA persona(s) must sign off, e.g. `organizer,attendee` |
 | `Epic` | text | the parent epic's issue number |
@@ -34,7 +34,7 @@ reconciles.
 | Label | Meaning |
 |---|---|
 | `dept:engineering` … `dept:admin` | who owns it now |
-| `type:bug` `type:feature` `type:ticket` … | mirrors `Type` |
+| `type:bug` `type:feature` `type:ticket` … | mirrors `Card type` (GitHub reserves the name `Type`) |
 | `P0` `P1` `P2` `P3` | mirrors `Priority` |
 | `needs:human` | waiting on the founder; agents skip it |
 | `needs:qa` | engineering says it is ready for personas |
@@ -47,7 +47,7 @@ reconciles.
 | Status | Who moves it here | What it must contain when it arrives |
 |---|---|---|
 | `Inbox` | anyone, the dispatcher, a support email | a title and whatever was received |
-| `Triage` | manager | a `Department`, a `Type`, a `Priority` |
+| `Triage` | manager | a `Department`, a `Card type`, a `Priority` |
 | `Ready` | product (features), support (bugs), manager (everything else) | the card template filled in (`protocols/card-template.md`); a feature has acceptance criteria and a persona list; a bug has reproduction steps that worked in preview |
 | `In Progress` | the owning agent, when it starts | the `agent:<dept>` label and a comment saying which session took it |
 | `In Review` | engineering, when the PR is open | a PR link, CI green, the PR body filled from the card |

@@ -66,7 +66,8 @@ field() { # name options(csv)
 # Status exists on every project; its options are edited in the UI to:
 #   Inbox, Triage, Ready, In Progress, In Review, Testing, Done, Blocked
 field Department "Management,Product,Engineering,QA,Support,Marketing,Bookkeeping,Admin"
-field Type       "bug,feature,ticket,spec,content,ledger,chore,epic"
+# "Type" is reserved by GitHub (the built-in issue-type field), so ours is "Card type".
+field "Card type" "bug,feature,ticket,spec,content,ledger,chore,epic"
 field Priority   "P0,P1,P2,P3"
 if ! gh project field-list "$PROJECT_NUMBER" --owner "$OWNER" --format json | jq -e '.fields[] | select(.name=="Persona")' >/dev/null; then
   gh project field-create "$PROJECT_NUMBER" --owner "$OWNER" --name Persona --data-type TEXT >/dev/null; echo "field: Persona"
