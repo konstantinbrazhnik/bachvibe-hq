@@ -17,6 +17,7 @@ Produce one screen. Read, in this order, and do not skip a source:
    journal within two hours is a stall.
 5. Open PRs in the product repos with a red check or a review waiting on an
    agent.
+6. `agents/admin/docs/calendar/CALENDAR.md` for anything due in 30 days.
 
 Write it as:
 
@@ -27,6 +28,7 @@ Write it as:
 ## Blocked                       (card → on whom → since when)
 ## P0
 ## Money                         (bookkeeping's last cost line, if newer than a week)
+## Deadlines                     (admin's calendar: anything due in 30 days, with its card and status)
 ```
 
 No section may say "see above". If a section is empty, say "none". Do not

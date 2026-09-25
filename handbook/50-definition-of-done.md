@@ -61,6 +61,18 @@ closing comment shows the evidence. "Done" with no evidence is `In Review`.
 - [ ] Anomalies (a cost line that moved > 25 %, a refund, a chargeback) become
       a card for the manager the same day.
 
+## Admin
+
+- [ ] Every obligation in `docs/calendar/CALENDAR.md` due within 90 days is
+      a card with a reminder card ahead of it, and every entry cites a source.
+- [ ] A filing card carries the prepared document or form, the fee, the
+      deadline, and the exact submission steps — and is `needs:human`.
+- [ ] Nothing was filed, signed or paid by the agent.
+- [ ] No identifier (EIN, file number, account, address) entered the repo;
+      the registry records locations.
+- [ ] A closed filing is recorded in the calendar and `RECORDS.md` with its
+      next occurrence scheduled.
+
 ## Management
 
 - [ ] Nothing sits in `Inbox` longer than one heartbeat, or in `Triage` longer

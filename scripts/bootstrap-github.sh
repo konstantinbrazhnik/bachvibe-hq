@@ -30,7 +30,7 @@ label() { # repo name color description
 }
 for repo in "$HQ_REPO" "$PRODUCT_REPO" "$SITE_REPO"; do
   gh repo view "$OWNER/$repo" >/dev/null 2>&1 || { echo "skip labels: $OWNER/$repo does not exist"; continue; }
-  for d in manager product engineering qa support marketing bookkeeping; do
+  for d in manager product engineering qa support marketing bookkeeping admin; do
     label "$repo" "dept:$d" 1D76DB "Owned by the $d department"
     label "$repo" "agent:$d" C5DEF5 "A $d session is working this card"
   done
@@ -45,6 +45,7 @@ for repo in "$HQ_REPO" "$PRODUCT_REPO" "$SITE_REPO"; do
   label "$repo" "needs:engineering" 0E8A16 "Needs an estimate or a technical answer"
   label "$repo" "needs:marketing"  0E8A16 "Needs copy, an asset, or brand input"
   label "$repo" "needs:bookkeeping" 0E8A16 "Needs a number"
+  label "$repo" "needs:admin"       0E8A16 "Needs a compliance, entity, or contract answer"
   label "$repo" "blocked"          D93F0B "Blocked; the blocker is in the last comment"
   echo "labels: $OWNER/$repo"
 done
@@ -64,7 +65,7 @@ field() { # name options(csv)
 }
 # Status exists on every project; its options are edited in the UI to:
 #   Inbox, Triage, Ready, In Progress, In Review, Testing, Done, Blocked
-field Department "Management,Product,Engineering,QA,Support,Marketing,Bookkeeping"
+field Department "Management,Product,Engineering,QA,Support,Marketing,Bookkeeping,Admin"
 field Type       "bug,feature,ticket,spec,content,ledger,chore,epic"
 field Priority   "P0,P1,P2,P3"
 if ! gh project field-list "$PROJECT_NUMBER" --owner "$OWNER" --format json | jq -e '.fields[] | select(.name=="Persona")' >/dev/null; then

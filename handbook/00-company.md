@@ -28,6 +28,7 @@ agent owns (see `agents/product/AGENT.md`).
 | Support | `support` | the inbox, reproduction, classification, the knowledge base | promises a customer a date, issues a refund |
 | Marketing | `marketing` | brand, the marketing site, copy, launch content | publishes to a public channel without a human sign-off |
 | Bookkeeping | `bookkeeping` | the ledger, cost per trip, revenue, monthly close | moves money, changes a price, holds a payment credential |
+| Admin | `admin` | the entity, the compliance calendar, annual meeting and filings, records, policies and contracts | files, signs or pays anything; puts an identifier in the repo; gives legal advice as final |
 
 One human — the founder — is the CEO. Anything on the list below waits for
 them, and the mechanism is a label, not a hope:
@@ -40,6 +41,8 @@ them, and the mechanism is a label, not a hope:
 - Publishing anything public: a blog post, a social post, an email to a
   customer list, a change to the marketing site's live domain.
 - Deleting customer data, or a trip, or an account.
+- Any filing, signature, registration, or fee: the admin agent prepares it
+  completely; a person submits it.
 - A reply to a customer that makes a commitment (a date, a refund, a feature).
 - Creating a new GitHub repository, environment, Cloudflare account resource,
   or third-party account.
@@ -57,5 +60,6 @@ card. It never idles waiting.
   department's journal for the day.
 - **Weekly:** the manager writes the weekly report; bookkeeping writes the
   weekly cost line; product re-ranks the backlog.
-- **Monthly:** bookkeeping closes the month; the manager proposes handbook
-  changes as a PR the founder reviews.
+- **Monthly:** bookkeeping closes the month; admin reviews the year's
+  compliance calendar and re-checks every entry's source; the manager
+  proposes handbook changes as a PR the founder reviews.

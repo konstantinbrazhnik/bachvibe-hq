@@ -21,8 +21,8 @@ done.
 
 Same prompt, with the last sentence of the loop replaced by: write
 `bulletins/weekly-<date>.md` — what shipped, what is blocked and on whom, the
-cost line from bookkeeping, the three things the founder should decide this
-week — and open one `needs:human` card titled `Weekly decisions <date>` that
+cost line from bookkeeping, admin's deadlines in the next 30 days, the three
+things the founder should decide this week — and open one `needs:human` card titled `Weekly decisions <date>` that
 links it.
 
 ## On-demand (dispatcher)

@@ -20,7 +20,7 @@ npx wrangler kv namespace create STATE      # paste the id into wrangler.jsonc
 npx wrangler secret put GITHUB_WEBHOOK_SECRET
 npx wrangler secret put GITHUB_TOKEN        # fine-grained: Issues RW, Projects RW, on REPOS only
 npx wrangler secret put RUNS_TOKEN          # any long random string; goes in the manager's MEMORY.md
-for d in MANAGER PRODUCT ENGINEERING QA SUPPORT MARKETING BOOKKEEPING; do
+for d in MANAGER PRODUCT ENGINEERING QA SUPPORT MARKETING BOOKKEEPING ADMIN; do
   npx wrangler secret put FIRE_URL_$d       # from the Routine's API trigger
   npx wrangler secret put FIRE_TOKEN_$d
 done

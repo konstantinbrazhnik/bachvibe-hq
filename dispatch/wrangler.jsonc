@@ -30,7 +30,7 @@
 	//   RUNS_TOKEN              bearer for GET /runs (the manager and /hey read it)
 	//   FIRE_URL_<DEPT>         each Routine's API-trigger fire endpoint
 	//   FIRE_TOKEN_<DEPT>       its bearer token
-	// DEPT ∈ MANAGER, PRODUCT, ENGINEERING, QA, SUPPORT, MARKETING, BOOKKEEPING
+	// DEPT ∈ MANAGER, PRODUCT, ENGINEERING, QA, SUPPORT, MARKETING, BOOKKEEPING, ADMIN
 	// Email Routing: bind support@bachvi.be to this Worker in the dashboard;
 	// the `email` handler below turns each message into an Inbox card.
 }

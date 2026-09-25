@@ -22,7 +22,7 @@ https://code.claude.com/docs/en/cloud-environments):
   webhooks (`issues`, `issue_comment`, `pull_request`, `label`) do. Hence
   `10-task-bus.md`'s rule that labels mirror fields.
 
-## The seven environments
+## The eight environments
 
 | Environment | Network | Repos attached by the Routine | Setup script does | Extra vars |
 |---|---|---|---|---|
@@ -33,6 +33,7 @@ https://code.claude.com/docs/en/cloud-environments):
 | `bv-support` | custom: GitHub, `*.bachvi.be`, Cloudflare (logs), the help-desk API | `bachvibe-hq`, `Daren-bach` **read-only** (no push) | `mount-agent.sh` | `BV_DEPT=support`, help-desk token, `CLOUDFLARE_API_TOKEN` **read-only**: Workers observability + D1 read on preview |
 | `bv-marketing` | custom: npm, Cloudflare, GitHub, image and font CDNs | `bachvibe-hq`, `bachvibe-site` | `mount-agent.sh` | `BV_DEPT=marketing`, `CLOUDFLARE_API_TOKEN` scoped to the site's **staging** Worker |
 | `bv-bookkeeping` | custom: GitHub, merchant-of-record API, Cloudflare billing API | `bachvibe-hq` | `mount-agent.sh` | `BV_DEPT=bookkeeping`, **read-only** tokens for MoR and Cloudflare billing |
+| `bv-admin` | custom: GitHub, plus the state, federal and registrar sites it must read | `bachvibe-hq` | `mount-agent.sh` | `BV_DEPT=admin` — **no credentials at all**; it prepares filings, a person submits them |
 
 **The setup script is the mount.** `scripts/mount-agent.sh` reads `BV_DEPT`,
 links `agents/$BV_DEPT/CLAUDE.md` to the root's `CLAUDE.local.md` (gitignored,
@@ -69,6 +70,8 @@ Exact prompts are in each `agents/<dept>/ROUTINE.md`; the schedule is:
 | `bv-marketing-heartbeat` | every 4 h | content and site cards |
 | `bv-bookkeeping-daily` | daily 12:00 | ledger, anomalies |
 | `bv-bookkeeping-monthly` | 1st, 13:00 | the monthly close |
+| `bv-admin-weekly` | Tuesdays 15:00 | the 90-day compliance sweep; reminder cards |
+| `bv-admin-monthly` | 1st, 15:00 | twelve-month calendar review, source re-check, quarter's tax dates to bookkeeping |
 
 Heartbeats are the floor, not the mechanism. The dispatcher's `/fire` call is
 what makes a labelled card start within a minute instead of within an hour.
@@ -100,7 +103,7 @@ bookkeeping reports it weekly as a line beside Cloudflare and the merchant fees.
    dispatcher needs).
 2. Deploy `dispatch/` with `wrangler deploy`; add the repository webhooks it
    prints. Point `support@bachvi.be` at it.
-3. Create the seven environments in Claude Code (web), one per row above,
+3. Create the eight environments in Claude Code (web), one per row above,
    each with `bash scripts/mount-agent.sh` as its setup script.
 4. **Use each folder by hand first** (stage `assisted`): open sessions in the
    environment, run the loop, fix `AGENT.md` and the skills until the output

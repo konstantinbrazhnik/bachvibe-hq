@@ -10,6 +10,7 @@ export const DEPARTMENTS = [
   'support',
   'marketing',
   'bookkeeping',
+  'admin',
 ] as const;
 export type Department = (typeof DEPARTMENTS)[number];
 
@@ -22,6 +23,7 @@ export const DEPARTMENT_OPTION: Record<Department, string> = {
   support: 'Support',
   marketing: 'Marketing',
   bookkeeping: 'Bookkeeping',
+  admin: 'Admin',
 };
 
 export const STATUSES = [
@@ -44,6 +46,7 @@ export const NEEDS_LABEL_TO_DEPT: Record<string, Department> = {
   'needs:engineering': 'engineering',
   'needs:marketing': 'marketing',
   'needs:bookkeeping': 'bookkeeping',
+  'needs:admin': 'admin',
 };
 
 export function deptFromLabel(name: string): Department | null {

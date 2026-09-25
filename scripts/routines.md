@@ -19,6 +19,8 @@ secrets (`FIRE_URL_<DEPT>` / `FIRE_TOKEN_<DEPT>`).
 | `bv-marketing-heartbeat` | `bv-marketing` | `0 */4 * * *` | `agents/marketing/ROUTINE.md` |
 | `bv-bookkeeping-daily` | `bv-bookkeeping` | `0 12 * * *` | `agents/bookkeeping/ROUTINE.md` |
 | `bv-bookkeeping-monthly` | `bv-bookkeeping` | `0 13 1 * *` | `agents/bookkeeping/ROUTINE.md` |
+| `bv-admin-weekly` | `bv-admin` | `0 15 * * 2` | `agents/admin/ROUTINE.md` |
+| `bv-admin-monthly` | `bv-admin` | `0 15 1 * *` | `agents/admin/ROUTINE.md` |
 
 The on-demand fires from the dispatcher target the department's heartbeat
 Routine (for the manager, the standup one). The prompts already sweep the
@@ -44,3 +46,8 @@ produces value soonest and keeps the founder able to watch each one:
 4. `bv-engineering-heartbeat` + `bv-qa-heartbeat` — once there are `Ready` cards.
 5. `bv-support-heartbeat` — once `support@bachvi.be` is routed.
 6. `bv-bookkeeping-*` — once there is a merchant-of-record account to read.
+7. `bv-admin-*` — early, actually: the entity decision gates the merchant
+   account, the bank, and the contracts, so the admin folder is used by hand
+   in the first week alongside the manager's, and its weekly Routine can be
+   the second one created. It holds no credentials, so it is the safest
+   folder to promote.

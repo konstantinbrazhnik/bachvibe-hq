@@ -12,7 +12,7 @@ ever lost in transit.
 | Field | Type | Values |
 |---|---|---|
 | `Status` | single select | `Inbox` → `Triage` → `Ready` → `In Progress` → `In Review` → `Testing` → `Done`, plus `Blocked` |
-| `Department` | single select | `Management`, `Product`, `Engineering`, `QA`, `Support`, `Marketing`, `Bookkeeping` |
+| `Department` | single select | `Management`, `Product`, `Engineering`, `QA`, `Support`, `Marketing`, `Bookkeeping`, `Admin` |
 | `Type` | single select | `bug`, `feature`, `ticket`, `spec`, `content`, `ledger`, `chore`, `epic` |
 | `Priority` | single select | `P0` (customer down), `P1` (this week), `P2` (this month), `P3` (someday) |
 | `Persona` | text | which QA persona(s) must sign off, e.g. `organizer,attendee` |
@@ -33,7 +33,7 @@ reconciles.
 
 | Label | Meaning |
 |---|---|
-| `dept:engineering` … `dept:bookkeeping` | who owns it now |
+| `dept:engineering` … `dept:admin` | who owns it now |
 | `type:bug` `type:feature` `type:ticket` … | mirrors `Type` |
 | `P0` `P1` `P2` `P3` | mirrors `Priority` |
 | `needs:human` | waiting on the founder; agents skip it |

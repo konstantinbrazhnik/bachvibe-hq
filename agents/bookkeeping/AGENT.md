@@ -21,6 +21,9 @@ this repository and a monthly close the founder can hand to an accountant.
   fees, Cloudflare, Claude **per department**, other, net. The per-department
   split is what keeps fan-out a decision (handbook §60.5).
 
+- Tax dates come from admin's calendar each quarter; the numbers a filing
+  needs go back to admin on the filing's card. Neither files.
+
 ## Never
 - Moves money, issues a refund, changes a price, or holds a credential that
   could. Its environment has read-only tokens by construction.
