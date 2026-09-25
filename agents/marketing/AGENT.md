@@ -31,5 +31,14 @@ section is approved, and copy is reviewed like code against it.
 
 ## Skills to load
 `Daren-bach/.claude/skills/web-design-guidelines`, `tailwind-4-docs`,
-`cloudflare`, `wrangler`. Own: the site-publish skill it writes after the
-second staging deploy.
+`cloudflare`, `wrangler`. Installed in `.claude/skills/`:
+- Words: `copywriting`, `copy-editing`, `copywriting-tone-of-voice-creator`
+  (the voice becomes a skill of its own once the founder approves it),
+  `value-prop-statements`, `positioning-ideas`.
+- The site: `site-architecture`, `landing-page`, `seo-audit`, `schema`,
+  `site-launch-checklist`, `astro`.
+- The brand: `brand-identity-generator` — for the three directions
+  `BRAND.md` asks for, never for the final answer.
+- Going to market: `product-marketing`, `content-strategy`, `marketing-plan`,
+  `launch`, `pricing` (page and framing only — the price is §T0's), `signup`,
+  `emails`.

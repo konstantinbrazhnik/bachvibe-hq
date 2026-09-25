@@ -73,6 +73,34 @@ A skill useful to more than one department is proposed as a PR into the HQ
 root's `.claude/skills/` (where `/hey` and `/kickoff` live); the manager
 reviews.
 
+## Installed skills: the registry, the lockfile, the review
+
+Each folder also carries skills from the public registry at skills.sh,
+installed with Vercel's `skills` CLI and pinned in that folder's
+`skills-lock.json` — the same mechanism the product repo uses. From inside
+`agents/<dept>/`:
+
+```bash
+npx skills find "<topic>"                          # search
+npx skills add <owner/repo> -s <name> -s <name> -a claude-code -y
+npx skills update                                  # bump the pinned versions
+```
+
+Three rules, because an installed skill runs with the agent's permissions:
+
+- **Read it before it runs.** Whoever installs a skill (an agent, by PR; the
+  founder, directly) reads every file in it and scans for anything that
+  fetches a URL, reads a credential, or tells the agent to disregard its
+  instructions. The install of 2026-09-25 was scanned that way; the record
+  is in the commit that added them.
+- **The handbook wins.** A registry skill that assumes a different board,
+  workflow or voice is used for its craft, not its process — `project-board`
+  audits our fields, it does not redesign them; `pricing` writes the page,
+  §T0 sets the price.
+- **An agent installs by PR, never in its Routine's loop.** A skill is a
+  standing change to what the folder can do; the founder sees it land.
+The lists of what each folder carries and why are in each `AGENT.md`.
+
 ## What memory is not
 
 - Not a copy of a card. The card is on GitHub.

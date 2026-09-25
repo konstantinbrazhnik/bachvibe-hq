@@ -39,4 +39,10 @@ into `BACHVIBE_PLAN.md` by PR, in its style.
 
 ## Skills to load
 `Daren-bach/.claude/skills/last-ride` (to know what the product actually does
-before specifying a change to it).
+before specifying a change to it). Installed in `.claude/skills/`:
+- Specs: `create-prd`, `user-stories`, `job-stories`, `jobs-to-be-done`,
+  `writing-design-docs`, `epic-breakdown-advisor`, `test-scenarios`.
+- Deciding: `prioritize-features`, `analyze-feature-requests`,
+  `pre-mortem`, `recording-decisions`.
+- The reseller spec in particular: `user-personas`, `positioning-statement`,
+  `pricing-strategy` (against `BACHVIBE_PLAN.md` §T20, never instead of it).

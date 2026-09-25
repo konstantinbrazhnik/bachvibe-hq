@@ -86,7 +86,14 @@ to make the deadline impossible to miss.
 7. Journal, commit, push, end.
 
 ## Skills to load
-
-None from the product repo. Own skills, in the order they will be written:
-`draft-annual-minutes`, `prepare-state-report`, `collect-w9`,
-`policy-from-template`. Each starts life as a runbook in `docs/runbooks/`.
+Installed in `.claude/skills/`:
+- `legal`, `compliance` — the checklists a solo founder's entity needs, as a
+  starting inventory for `docs/calendar/CALENDAR.md`; every item still cites
+  its own source before it becomes a row.
+- `privacy-policy`, `legal-page-generator`, `draft-nda`,
+  `employment-contract-templates` — drafts for counsel to review, never
+  published from here.
+- `documenting-contracts`, `recording-decisions` — the registry and the
+  determinations table.
+Own skills still to write, as runbooks first: `draft-annual-minutes`,
+`prepare-state-report`, `collect-w9`, `policy-from-template`.

@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "skills": {
+    "compliance": {
+      "source": "whawkinsiv/solo-founder-skills",
+      "sourceType": "github",
+      "skillPath": "skills/compliance/SKILL.md",
+      "computedHash": "e7232964f28f642822a2cf8ccb9ee5eae1806a929dfaa79b80d8489092ec7575"
+    },
+    "documenting-contracts": {
+      "source": "riekelt/technical-writer",
+      "sourceType": "github",
+      "skillPath": "plugins/technical-writer/skills/documenting-contracts/SKILL.md",
+      "computedHash": "03d0eb48fd0ed79096c0413819345d3ce172eb09d0f2f09a967719ac7509c379"
+    },
+    "draft-nda": {
+      "source": "phuryn/pm-skills",
+      "sourceType": "github",
+      "skillPath": "pm-toolkit/skills/draft-nda/SKILL.md",
+      "computedHash": "0e8ee39d06733a50fbaadb08d60e646bd855297de79b4c5f67ac463511c02cf3"
+    },
+    "employment-contract-templates": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "skillPath": "plugins/hr-legal-compliance/skills/employment-contract-templates/SKILL.md",
+      "computedHash": "f8c8b2caa4b5c52770c074c11370821582a1c2cfa45120a0e6bafb0f75422bd7"
+    },
+    "legal": {
+      "source": "whawkinsiv/solo-founder-skills",
+      "sourceType": "github",
+      "skillPath": "skills/legal/SKILL.md",
+      "computedHash": "6abd57759e9bea0f73dca1330915050d357d996cb025bb4744c939404ca4c301"
+    },
+    "legal-page-generator": {
+      "source": "kostja94/marketing-skills",
+      "sourceType": "github",
+      "skillPath": "skills/pages/legal/legal/SKILL.md",
+      "computedHash": "dd0597e82cfb5689f216d4acf468764f6f7619ccabdadfdeecb2152565282c64"
+    },
+    "privacy-policy": {
+      "source": "phuryn/pm-skills",
+      "sourceType": "github",
+      "skillPath": "pm-toolkit/skills/privacy-policy/SKILL.md",
+      "computedHash": "b7de21713e3b59e8a152b47135f4a501e8ecf22e5e550dc64937f18ced7e6eae"
+    },
+    "recording-decisions": {
+      "source": "riekelt/technical-writer",
+      "sourceType": "github",
+      "skillPath": "plugins/technical-writer/skills/recording-decisions/SKILL.md",
+      "computedHash": "5efc8dfacf79aebff2b37cccf97a7e38c229de233257962a0c96b34dfc4c67af"
+    }
+  }
+}

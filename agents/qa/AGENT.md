@@ -63,7 +63,15 @@ fixes anything: a fix from QA is a bug nobody else can see.
 `Daren-bach/.claude/skills/`: `playwright-cli`, `playwright-best-practices`,
 `device-testing`, `emulator-driving`, `gauntlet-testing` where relevant. Own
 sub-agents: `persona-organizer`, `persona-attendee`, `persona-honoree`,
-`persona-reseller`, `persona-payer`, `persona-peeker` (draft).
+`persona-reseller`, `persona-payer`, `persona-peeker` (draft). Installed in
+`.claude/skills/`:
+- `webapp-testing` — drive a running app with Playwright from a script.
+- `e2e-testing-patterns` — page objects, fixtures, flake avoidance.
+- `wcag-audit-patterns`, `screen-reader-testing` — every persona also has to
+  be able to *read* the screen; the product's contrast rule (#20) is tested
+  here, not assumed.
+- `test-scenarios` — turn a card's Done-when into scenarios per persona.
+- `writing-issues` — a bug card a stranger can reproduce from.
 
 ## Compound
 A persona that found something the card did not ask about writes it to

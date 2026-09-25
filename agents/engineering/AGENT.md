@@ -57,4 +57,11 @@ From `Daren-bach/.claude/skills/`: `last-ride`, `branching`, `cloudflare`,
 `workers-best-practices`, `durable-objects`, `hono`, `vite`, `vitest`,
 `device-testing` where the change is user-visible; `code-review`, `simplify`,
 `security-review` at review time. Own sub-agents in `.claude/agents/`:
-`conventions-reviewer`, `test-adequacy-reviewer`.
+`conventions-reviewer`, `test-adequacy-reviewer`. Installed in
+`.claude/skills/`:
+- `diagnosing-bugs` — reproduce before you fix; redact as you go.
+- `code-review` — the second reviewer, after the sub-agents.
+- `using-git-worktrees` — the second card in a session gets its own checkout.
+- `resolving-merge-conflicts` — for the base merge before a PR.
+- `writing-runbooks`, `writing-changelogs` — the compound step's two forms.
+- `astro` — for `bachvibe-site` cards that need a build, not copy.

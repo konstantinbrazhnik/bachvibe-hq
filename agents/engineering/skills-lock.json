@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "skills": {
+    "astro": {
+      "source": "astrolicious/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/astro/SKILL.md",
+      "computedHash": "ebefe26b231d32379c14e41a46c2de7b4b0184543bedab7febdabe4fb21fba4e"
+    },
+    "code-review": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/code-review/SKILL.md",
+      "computedHash": "caa9a086baaf9e0f7cd71f64edfa83da6821c05e826b083221f3d02e3d6a1905"
+    },
+    "diagnosing-bugs": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/diagnosing-bugs/SKILL.md",
+      "computedHash": "37b5e9c624513551da790b52864dc8c84bff996a6d03a380cc6facdcc0a88354"
+    },
+    "resolving-merge-conflicts": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/resolving-merge-conflicts/SKILL.md",
+      "computedHash": "63b2dcadbe9124caeb3448f1378286fe18dcefb2494f60e136831b8b4986ca27"
+    },
+    "using-git-worktrees": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "skillPath": "skills/using-git-worktrees/SKILL.md",
+      "computedHash": "48c8a1040e378e0cb7208107294e3afa9067b9370c3f33b49a443eb6b7528b0d"
+    },
+    "writing-changelogs": {
+      "source": "riekelt/technical-writer",
+      "sourceType": "github",
+      "skillPath": "plugins/technical-writer/skills/writing-changelogs/SKILL.md",
+      "computedHash": "4ce85fa5602d738c6d8a0750dca9c04d3692f4b72aef83399f3eec7a6ceb5398"
+    },
+    "writing-runbooks": {
+      "source": "riekelt/technical-writer",
+      "sourceType": "github",
+      "skillPath": "plugins/technical-writer/skills/writing-runbooks/SKILL.md",
+      "computedHash": "5bbb23c68b46d7dae8db38b7341dffbab008c0d8573bd0bcfed8b9872d58ac4d"
+    }
+  }
+}

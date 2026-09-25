@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "skills": {
+    "e2e-testing-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "skillPath": "plugins/developer-essentials/skills/e2e-testing-patterns/SKILL.md",
+      "computedHash": "6daed3254a84348588532aca327ec82a57cafefd7c97c50e75879788f7c1a18d"
+    },
+    "screen-reader-testing": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "skillPath": "plugins/accessibility-compliance/skills/screen-reader-testing/SKILL.md",
+      "computedHash": "9cb1ea131a4b36edd54f42a6995a8b93bac2b08a9cf56be9d2397d6f98b479d0"
+    },
+    "test-scenarios": {
+      "source": "phuryn/pm-skills",
+      "sourceType": "github",
+      "skillPath": "pm-execution/skills/test-scenarios/SKILL.md",
+      "computedHash": "a65c9547fb66a7383323ba6986b18f682a3fa010d6b0b030abc4e68ccb56a54e"
+    },
+    "wcag-audit-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "skillPath": "plugins/accessibility-compliance/skills/wcag-audit-patterns/SKILL.md",
+      "computedHash": "3de7787d150fcbffdf6137180ea450bb676fca7ba1c7d70dc9a909c003795d5b"
+    },
+    "webapp-testing": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/webapp-testing/SKILL.md",
+      "computedHash": "ad5b1fc52807e9afa4635e59218a026b164dc58b6c3f41b0f7c644dcd6ccf572"
+    },
+    "writing-issues": {
+      "source": "riekelt/technical-writer",
+      "sourceType": "github",
+      "skillPath": "plugins/technical-writer/skills/writing-issues/SKILL.md",
+      "computedHash": "a84665a4858174c6fc4f15068609ed54a49fe6be0b99c151110627ab22fec298"
+    }
+  }
+}

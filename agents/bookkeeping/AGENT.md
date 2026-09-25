@@ -37,5 +37,12 @@ journal. Monthly (1st): close the prior month, recompute cost per trip, open a
 `needs:human` card "Close YYYY-MM" linking the close doc.
 
 ## Skills to load
-Own skills only: the export skills it writes for each source after the second
-month.
+Installed in `.claude/skills/`:
+- `accounting`, `finances`, `payments` — a solo founder's books, the
+  merchant-of-record flow, what a payout export contains.
+- `financial-operations-expert` — month-end close discipline.
+- `startup-financial-modeling`, `saas-economics-efficiency-metrics`,
+  `saas-revenue-growth-metrics`, `finance-metrics-quickref` — for
+  `docs/cost-per-trip.md` against `BACHVIBE_PLAN.md` §T20.
+Own skills still to write: one export skill per source, after the second
+month of reading it.

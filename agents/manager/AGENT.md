@@ -44,4 +44,10 @@ Standard loop (`handbook/30-memory-and-skills.md`), with these specifics:
 
 ## Skills to load
 The HQ root's `/hey` (the briefing this agent's standup is the written form
-of) and `/kickoff`; own skills under `.claude/skills/`.
+of) and `/kickoff`. Installed in `.claude/skills/` (mounted by name):
+- `triage` — sort an inbox of issues by real severity and ownership.
+- `project-board` — audit the board's fields and columns against the
+  handbook's contract without changing the workflow.
+- `writing-issues` — the shape of a card a stranger can start from.
+- `recording-decisions` — decision records for `docs/`.
+- `retro`, `summarize-meeting` — the weekly report's raw material.

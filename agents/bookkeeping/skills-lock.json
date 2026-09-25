@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "skills": {
+    "accounting": {
+      "source": "whawkinsiv/solo-founder-skills",
+      "sourceType": "github",
+      "skillPath": "skills/accounting/SKILL.md",
+      "computedHash": "7b859549069c9462f3789923731ac4cdb75f75f0f5a730b3282d8a942d333cd3"
+    },
+    "finance-metrics-quickref": {
+      "source": "deanpeters/product-manager-skills",
+      "sourceType": "github",
+      "skillPath": "skills/finance-metrics-quickref/SKILL.md",
+      "computedHash": "3f6ee938569aa804b2a30654499b2aea1b3c79493a9d068380c52351c4cabc5a"
+    },
+    "finances": {
+      "source": "whawkinsiv/solo-founder-skills",
+      "sourceType": "github",
+      "skillPath": "skills/finances/SKILL.md",
+      "computedHash": "249464d8f58028c7cfea6813def0a8595e38804e080c4cc45f18f33029dfbc10"
+    },
+    "payments": {
+      "source": "whawkinsiv/solo-founder-skills",
+      "sourceType": "github",
+      "skillPath": "skills/payments/SKILL.md",
+      "computedHash": "9f24205cdf005807fb1f2ca164b3ad41b95b27239f1f24243bb2571086319b3c"
+    },
+    "saas-economics-efficiency-metrics": {
+      "source": "deanpeters/product-manager-skills",
+      "sourceType": "github",
+      "skillPath": "skills/saas-economics-efficiency-metrics/SKILL.md",
+      "computedHash": "c74d6748c0a27a1eb7a2035a3e760fe074a0e56ee8ad05afe0d8bc1840f251de"
+    },
+    "saas-revenue-growth-metrics": {
+      "source": "deanpeters/product-manager-skills",
+      "sourceType": "github",
+      "skillPath": "skills/saas-revenue-growth-metrics/SKILL.md",
+      "computedHash": "690d42ad4c3e73ad0c7f062a74fea0ed4382516a853f5c0e3203b67ef43846e5"
+    },
+    "startup-financial-modeling": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "skillPath": "plugins/startup-business-analyst/skills/startup-financial-modeling/SKILL.md",
+      "computedHash": "4618e2ecf456d323c6b26c7a1fc441830779823cee191cccb782eb837ba84068"
+    }
+  }
+}

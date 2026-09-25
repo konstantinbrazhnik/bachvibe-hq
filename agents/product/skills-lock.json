@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "skills": {
+    "analyze-feature-requests": {
+      "source": "phuryn/pm-skills",
+      "sourceType": "github",
+      "skillPath": "pm-product-discovery/skills/analyze-feature-requests/SKILL.md",
+      "computedHash": "c0c1815f750b4a0ff6dccd5accdec50659ddc4015de80a4dc51e0608b6d71587"
+    },
+    "create-prd": {
+      "source": "phuryn/pm-skills",
+      "sourceType": "github",
+      "skillPath": "pm-execution/skills/create-prd/SKILL.md",
+      "computedHash": "5c242d3abb9508f59021ed22936230e555971feab690cbf2a90142e06d10e7ae"
+    },
+    "epic-breakdown-advisor": {
+      "source": "deanpeters/product-manager-skills",
+      "sourceType": "github",
+      "skillPath": "skills/epic-breakdown-advisor/SKILL.md",
+      "computedHash": "5ed25f1119886aaf03a8faf4b96f5e327661767516fe26f75909aba94023d420"
+    },
+    "job-stories": {
+      "source": "phuryn/pm-skills",
+      "sourceType": "github",
+      "skillPath": "pm-execution/skills/job-stories/SKILL.md",
+      "computedHash": "8b4a0d96bffd81266981e7ed0ed979d415995f6734d65e3cf6293cd28399d3a3"
+    },
+    "jobs-to-be-done": {
+      "source": "deanpeters/product-manager-skills",
+      "sourceType": "github",
+      "skillPath": "skills/jobs-to-be-done/SKILL.md",
+      "computedHash": "07237b340a1fca3641a5cad590655a6f8f240977e6903b47b42151835117014b"
+    },
+    "positioning-statement": {
+      "source": "deanpeters/product-manager-skills",
+      "sourceType": "github",
+      "skillPath": "skills/positioning-statement/SKILL.md",
+      "computedHash": "66803d7fdde9df8716ed93967e22e88070ae3685aec2c0e844ba6e239b69f224"
+    },
+    "pre-mortem": {
+      "source": "phuryn/pm-skills",
+      "sourceType": "github",
+      "skillPath": "pm-execution/skills/pre-mortem/SKILL.md",
+      "computedHash": "19ae048852f8e0ea4009e519e6ad6d0627e4c051858ddd31cb229deb64eea68f"
+    },
+    "pricing-strategy": {
+      "source": "phuryn/pm-skills",
+      "sourceType": "github",
+      "skillPath": "pm-product-strategy/skills/pricing-strategy/SKILL.md",
+      "computedHash": "8b08c790570b59f344430c14d7d5b1dee44d585ced4b50ce9915130ea902cebf"
+    },
+    "prioritize-features": {
+      "source": "phuryn/pm-skills",
+      "sourceType": "github",
+      "skillPath": "pm-product-discovery/skills/prioritize-features/SKILL.md",
+      "computedHash": "0cd2f0bf0a1440b12aec601470c30d86dafd1bb0f8a507d7caced94f4bc8a2f8"
+    },
+    "recording-decisions": {
+      "source": "riekelt/technical-writer",
+      "sourceType": "github",
+      "skillPath": "plugins/technical-writer/skills/recording-decisions/SKILL.md",
+      "computedHash": "5efc8dfacf79aebff2b37cccf97a7e38c229de233257962a0c96b34dfc4c67af"
+    },
+    "test-scenarios": {
+      "source": "phuryn/pm-skills",
+      "sourceType": "github",
+      "skillPath": "pm-execution/skills/test-scenarios/SKILL.md",
+      "computedHash": "a65c9547fb66a7383323ba6986b18f682a3fa010d6b0b030abc4e68ccb56a54e"
+    },
+    "user-personas": {
+      "source": "phuryn/pm-skills",
+      "sourceType": "github",
+      "skillPath": "pm-market-research/skills/user-personas/SKILL.md",
+      "computedHash": "271152c8d16d09fd3448e3d33707d61373c3c06e4619e8a1e9730d5305c120d4"
+    },
+    "user-stories": {
+      "source": "phuryn/pm-skills",
+      "sourceType": "github",
+      "skillPath": "pm-execution/skills/user-stories/SKILL.md",
+      "computedHash": "b9ba16cb7178e3e71b84cfb6d8e8226244bd04c1a7a957cf41cb793e567dd0d5"
+    },
+    "writing-design-docs": {
+      "source": "riekelt/technical-writer",
+      "sourceType": "github",
+      "skillPath": "plugins/technical-writer/skills/writing-design-docs/SKILL.md",
+      "computedHash": "3c460e921ad2fbe5e3143a619498b264d9d008e1c5406a95901ff89dada445d2"
+    }
+  }
+}

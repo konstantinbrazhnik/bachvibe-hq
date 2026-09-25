@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "skills": {
+    "churn-prevention": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/churn-prevention/SKILL.md",
+      "computedHash": "527c4740617d9eeea66e14c3f7b7ecede41d6b0520c252f413fdfd0b763a6c64"
+    },
+    "customer-research": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/customer-research/SKILL.md",
+      "computedHash": "637f87fab0771b73cffc13e339584f106f1f439992812cd2e025cf3caab3855b"
+    },
+    "diagnosing-bugs": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/diagnosing-bugs/SKILL.md",
+      "computedHash": "37b5e9c624513551da790b52864dc8c84bff996a6d03a380cc6facdcc0a88354"
+    },
+    "feedback": {
+      "source": "whawkinsiv/solo-founder-skills",
+      "sourceType": "github",
+      "skillPath": "skills/feedback/SKILL.md",
+      "computedHash": "191a74404cfd1681ce5d428a77bdfceaa7a69281c13cb5cd8539ff84fa4711da"
+    },
+    "onboarding": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/onboarding/SKILL.md",
+      "computedHash": "e1afc992d94288dad5ead64cea7276dea14a58e539889bf0cc26f7503685fd11"
+    },
+    "support": {
+      "source": "whawkinsiv/solo-founder-skills",
+      "sourceType": "github",
+      "skillPath": "skills/support/SKILL.md",
+      "computedHash": "5fd4241b71156e27c5cfdcf35ef8ec263a1c9d979130eafa206b8186617c2358"
+    },
+    "triage": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/triage/SKILL.md",
+      "computedHash": "b954d74c219c805bf353d6642251a713c9b2e9cfdb11babfe588bcfe7dfd16d5"
+    },
+    "writing-issues": {
+      "source": "riekelt/technical-writer",
+      "sourceType": "github",
+      "skillPath": "plugins/technical-writer/skills/writing-issues/SKILL.md",
+      "computedHash": "a84665a4858174c6fc4f15068609ed54a49fe6be0b99c151110627ab22fec298"
+    },
+    "writing-postmortems": {
+      "source": "riekelt/technical-writer",
+      "sourceType": "github",
+      "skillPath": "plugins/technical-writer/skills/writing-postmortems/SKILL.md",
+      "computedHash": "6eb8b67786d84815580680cc71aeadaebeb8145302c1eede3fa9490a82132497"
+    },
+    "writing-runbooks": {
+      "source": "riekelt/technical-writer",
+      "sourceType": "github",
+      "skillPath": "plugins/technical-writer/skills/writing-runbooks/SKILL.md",
+      "computedHash": "5bbb23c68b46d7dae8db38b7341dffbab008c0d8573bd0bcfed8b9872d58ac4d"
+    }
+  }
+}

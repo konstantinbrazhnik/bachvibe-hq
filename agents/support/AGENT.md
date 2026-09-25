@@ -47,20 +47,18 @@ Standard loop:
 
 ## Skills to load
 `Daren-bach/.claude/skills/last-ride` (to know what the app promises) and
-`branching` (to run preview safely). Own skills, in the order they will be
-written — these are the ops skills handbook §60.2 names, and the first
-runbooks in `docs/runbooks/` are their drafts:
-- **build-to-commit** — `/api/version` build id → commit → PR → card, so a
-  report always says which build it was seen on and what changed since.
-- **tail-preview** — `wrangler tail daren-bach-preview` with the read-only
-  observability token; what a 500 looks like versus a refused write.
-- **read-preview-db** — `wrangler d1 execute last-ride-preview --remote
-  --command "SELECT …"` read-only, the schema check in `GET
-  /api/admin/migrations`, and the rule that a missing table is a migration
-  that did not land, not a bug in the code.
-- **reproduce-as** — impersonate a role on preview, walk the steps, capture
-  the trace; the skill the second reproduction produces.
-- **help-desk** — read and reply, once a help desk exists.
+`branching` (to run preview safely). Installed in `.claude/skills/`:
+- `triage` — classify an inbox by severity and owner.
+- `diagnosing-bugs` — reproduce with commands and captured artifacts,
+  secrets redacted; the reproduction skill this agent would otherwise write.
+- `support`, `feedback`, `onboarding`, `churn-prevention`,
+  `customer-research` — replying, and turning replies into product signal.
+- `writing-issues`, `writing-runbooks`, `writing-postmortems` — the three
+  outputs of this folder, in the shape engineering reads.
+
+The ops skills still to be written here, as runbooks first
+(`build-to-commit`, `tail-preview`, `read-preview-db`, `help-desk`), are
+specific to this product; the installed ones are the general craft.
 
 ## Compound
 Every reproduced bug is a `docs/solutions/` entry once fixed (support writes
