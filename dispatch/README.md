@@ -16,7 +16,7 @@ cron */15 ────────────────→ reconcile: fields 
 ```bash
 cd hq/dispatch
 npm install
-npx wrangler kv namespace create STATE      # paste the id into wrangler.jsonc
+# KV: BV_DISPATCH already exists and its id is in wrangler.jsonc (binding STATE)
 npx wrangler secret put GITHUB_WEBHOOK_SECRET
 npx wrangler secret put GITHUB_TOKEN        # fine-grained: Issues RW, Projects RW, on REPOS only
 npx wrangler secret put RUNS_TOKEN          # any long random string; goes in the manager's MEMORY.md
