@@ -13,7 +13,7 @@
 		"TICKET_REPO": "konstantinbrazhnik/bachvibe-hq",
 		"PROJECT_OWNER": "konstantinbrazhnik",
 		// Filled from `scripts/bootstrap-github.sh` output.
-		"PROJECT_NUMBER": "0",
+		"PROJECT_NUMBER": "1",
 		// Seconds between two fires of the same department. A fresh session
 		// sweeps its whole column, so a burst of label changes needs one wake.
 		"FIRE_DEBOUNCE_SECONDS": "300"
