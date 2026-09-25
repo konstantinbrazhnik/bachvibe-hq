@@ -1,15 +1,15 @@
 # BachVibe HQ — the company that runs itself
 
-This directory is the scaffold for **`konstantinbrazhnik/bachvibe-hq`**: one
+**`konstantinbrazhnik/bachvibe-hq`** is one
 repository that holds every agent in the BachVibe organisation, the handbook
 they all operate under, the memory and skills each of them accumulates, and the
 small Cloudflare Worker that turns GitHub events into work.
 
-It lives inside `Daren-bach` only so it can be reviewed as one pull request.
-Once approved it is split out into its own repository with
-[`scripts/split-out.sh`](scripts/split-out.sh) and never edited here again.
-The reasoning behind "one HQ repo, product code elsewhere" is in
-[`../AGENT_ORG_PLAN.md`](../AGENT_ORG_PLAN.md) §3.
+It was scaffolded inside `Daren-bach` (pull request #77 there) and split out
+with `scripts/split-out.sh` on 2026-09-25; this repository is now the only
+place it is edited. The proposal it implements, including the reasoning
+behind "one HQ repo, product code elsewhere", is
+[`AGENT_ORG_PLAN.md` in Daren-bach](https://github.com/konstantinbrazhnik/Daren-bach/blob/preview/AGENT_ORG_PLAN.md).
 
 ## Layout
 

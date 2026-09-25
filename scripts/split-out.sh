@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Moves hq/ out of Daren-bach into its own repository, history included.
-# Run from the Daren-bach checkout after the scaffold PR has merged.
+# Moved hq/ out of Daren-bach into this repository, history included — run
+# once on 2026-09-25. Kept as the record of how, and as the pattern for
+# splitting a department out later (change the prefix).
 #
 #   CREATE_REPOS=1 hq/scripts/bootstrap-github.sh     # creates bachvibe-hq first
 #   hq/scripts/split-out.sh
