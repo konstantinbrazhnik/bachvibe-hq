@@ -35,6 +35,25 @@ https://code.claude.com/docs/en/cloud-environments):
 | `bv-bookkeeping` | custom: GitHub, merchant-of-record API, Cloudflare billing API | `bachvibe-hq` | `mount-agent.sh` | `BV_DEPT=bookkeeping`, **read-only** tokens for MoR and Cloudflare billing |
 | `bv-admin` | custom: GitHub, plus the state, federal and registrar sites it must read | `bachvibe-hq` | `mount-agent.sh` | `BV_DEPT=admin` — **no credentials at all**; it prepares filings, a person submits them |
 
+**Tokens are API credentials, not environment variables.** A cloud
+environment on a Pro or Max plan can hold an *API credential*: the agent
+proxy attaches the token to requests for the hosts you list after the request
+leaves the VM, so the token never reaches the session, its shell, or any file
+(https://code.claude.com/docs/en/cloud-environments#add-api-credentials).
+Every `CLOUDFLARE_API_TOKEN` and help-desk or billing token in the table above
+is stored that way — host `api.cloudflare.com` (or the vendor's API host),
+header `Authorization`, prefix `Bearer`. Only identifiers go in environment
+variables: `BV_DEPT`, `CLOUDFLARE_ACCOUNT_ID`, `E2E_BASE_URL`. Two
+consequences: a credential applies to every session in its environment, which
+is exactly the per-department least privilege the table describes; and the
+setup script runs before the proxy connects, so `mount-agent.sh` must never
+need a token. Wrangler expects a token variable to exist before it will send
+any request, so set `CLOUDFLARE_API_TOKEN=placeholder` as a plain variable in
+environments that deploy — the proxy supplies the real value. (Verify on the
+first `wrangler whoami` in a new environment that the proxy replaces the
+header; if it does not, that one environment falls back to the token as a
+variable and the credential still serves direct API calls.)
+
 **The setup script is the mount.** `scripts/mount-agent.sh` reads `BV_DEPT`,
 links `agents/$BV_DEPT/CLAUDE.md` to the root's `CLAUDE.local.md` (gitignored,
 auto-loaded) and the folder's `.claude/agents/*` and `.claude/skills/*` into
